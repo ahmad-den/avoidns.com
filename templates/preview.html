@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+  <section class="mainform">
+    <div id="background-effect"></div>
+    <div class="form-container">
+      <h1><i class="fas fa-check-circle" style="color: #02C08C; font-size: 4rem;"></i></h1>
+      <p class="text"><i class="fas fa-clock"></i> Magic link for <a style="color: #F0B172; font-size: 15px;" href="{{ original_domain }}">{{ original_domain }}</a> is active for <strong>60</strong> minutes</p>
+      <div class="input-wrap">
+        <input id="finalUrl" class="contact-input" autocomplete="off" value="{{ final_url }}" name="Domain.com" type="text" readonly>
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2zm6 3h2v2h-2v-2z" fill="#888"/>
+        </svg>
+      </div>
+      <div class="contact-buttons">
+        <input type="button" value="Copy" class="btn" onclick="copyToClipboard()">
+      </div>
+      <div id="toast" style="display: none;">URL Copied</div>
+    </div>
+  </section>
+{% endblock %}

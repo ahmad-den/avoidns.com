@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+  <section class="mainform">
+    <div id="background-effect"></div>
+    <div class="form-container">
+      <h1>Contact <span class="text-neon text-orange"><b>Us</b></span><span class="text-neon">.</span></h1>
+      <p>Fill out the form below to get in touch with us.</p>
+      <form action="/submit_contact" method="POST" class="space-y-6" id="contact-form">
+        <div class="input-wrap">
+          <input id="nameField" name="nameField" type="text" required placeholder=" " class="block w-full mainform-input">
+          <label for="nameField">Name</label>
+          <div id="nameError" class="error-message"></div>
+        </div>
+        <div class="input-wrap">
+          <input id="emailField" name="emailField" type="email" required placeholder=" " class="block w-full mainform-input">
+          <label for="emailField">Email</label>
+          <div id="emailError" class="error-message"></div>
+        </div>
+        <div class="input-wrap">
+          <textarea id="messageField" name="messageField" required placeholder=" " class="block w-full mainform-input"></textarea>
+          <label for="messageField">Message</label>
+          <div id="messageError" class="error-message"></div>
+        </div>
+        <button type="submit" class="btn">SUBMIT</button>
+      </form>
+    </div>
+  </section>
+
+{% endblock %}
+
