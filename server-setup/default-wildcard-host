@@ -1,0 +1,32 @@
+# Default server block that catches undefined server names
+server {
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+    http2 on;
+    server_name _;
+
+    access_log /var/log/nginx/default.access.log;
+    error_log /var/log/nginx/default.error.log;
+
+    ssl_certificate /etc/nginx/ssl/avoidns.com.crt;
+    ssl_certificate_key /etc/nginx/ssl/avoidns.com.key;
+
+    # Redirect all requests to avoidns.com/expired
+    location / {
+        access_log /var/log/nginx/default_in.access.log;
+        error_log /var/log/nginx/default_in.error.log;
+        return 301 https://avoidns.com/expired;
+    }
+}
+
+# HTTP redirect server block
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+
+    # Redirect all HTTP traffic to HTTPS
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}

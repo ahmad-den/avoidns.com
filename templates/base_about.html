@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+  <title>{% block title %}About Us - AvoiDNS{% endblock %}</title>
+  <meta name="description" content="Learn more about AvoiDNS and what we offer.">
+  <!-- OpenGraph meta tags -->
+  <meta property="og:title" content="About Us">
+  <meta property="og:description" content="Learn more about AvoiDNS and what we offer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://avoidns.com">
+  <meta property="og:image" content="{{ url_for('static', filename='og-image.png') }}">
+  <meta property="og:site_name" content="AVOIDNS">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free DNS Testing Tool",
+    "url": "https://avoidns.com",
+    "description": "Test your website with our free DNS testing tool by adding domain and IP before making actual DNS changes. Ensure your site works perfectly without any risks or downtime. No limits, no charges.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "All",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "150"
+    }
+  }
+  </script>
+  <!-- Preload CSS -->
+  <link rel="preload" href="{{ url_for('static', filename='css/fonts.css') }}" as="style">
+  <link rel="preload" href="{{ url_for('static', filename='styles-about.css') }}" as="style">
+  <link rel="preload" href="https://avoidns.com/static/white-logo.png" as="image">
+  <!-- Preload Fonts -->
+  <link rel="preload" href="{{ url_for('static', filename='fonts/poppins/poppins-regular.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="{{ url_for('static', filename='fonts/poppins/poppins-bold.woff2') }}" as="font" type="font/woff2" crossorigin="anonymous">
+  <!-- Load CSS -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" as="style">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles-about.css') }}">
+</head>
+<body>
+  {% include 'header.html' %}
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+  {% include 'footer.html' %}
+  <script>
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.remove('hidden');
+    } else {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.birds.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
+  <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+  <script>
+    let currentEffect;
+    function setVantaEffect() {
+      if (currentEffect) currentEffect.destroy();
+      currentEffect = VANTA.BIRDS({
+        el: "#background-effect",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: 0x10e18,
+        color1: 0xffd100,
+        color2: 0x820c12,
+        colorMode: "lerp",
+        birdSize: 0.50,
+        wingSpan: 12.00,
+        speedLimit: 1.00,
+        separation: 100.00,
+        alignment: 100.00,
+        cohesion: 100.00
+      });
+    }
+    setVantaEffect();  // Initialize effect on page load
+  </script>
+</body>
+</html>
+
